@@ -1,4 +1,4 @@
-package com.simplon.dvdstore;
+/* package com.simplon.dvdstore;
 // Importaciones necesarias para la clase
 import com.simplon.dvdstore.repositories.DvdRepositoryModel;
 import lombok.Data;
@@ -16,4 +16,4 @@ import java.util.List;
 public class DvdStoreModel {
     // Una lista de objetos DvdModel que representa una colección de DVDs
     List<DvdRepositoryModel> dvds = new ArrayList<>();
-}
+} */
