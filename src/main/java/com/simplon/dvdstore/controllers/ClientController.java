@@ -2,6 +2,7 @@ package com.simplon.dvdstore.controllers;
 
 import com.simplon.dvdstore.services.ClientService;
 import com.simplon.dvdstore.services.ClientServiceModel;
+import com.simplon.dvdstore.services.DvdServiceModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,6 +31,12 @@ public class ClientController {
             clientDTOS.add(new ClientDTO(j.getName(), j.getEmail()));
         }
         return clientDTOS;
+    }
+
+    @GetMapping("/{id}")
+    public ClientDTO getById(@PathVariable Long id) {
+        ClientServiceModel clientServiceModel = clientService.getById(id);
+        return new ClientDTO(clientServiceModel.getName(), clientServiceModel.getEmail());
     }
 
 }

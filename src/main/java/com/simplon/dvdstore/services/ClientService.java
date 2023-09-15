@@ -27,4 +27,9 @@ public class ClientService {
         }
         return clientServiceModel;
     }
+
+    public ClientServiceModel getById(Long id) {
+        ClientRepositoryModel clientRepositoryModel = clientRepository.findById(id).get();
+        return new ClientServiceModel(clientRepositoryModel.getName(), clientRepositoryModel.getEmail());
+    }
 }
