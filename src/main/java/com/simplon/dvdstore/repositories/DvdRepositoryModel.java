@@ -14,15 +14,24 @@ public class DvdRepositoryModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "genre")
     private String genre;
+
+    @Column(name = "prix")
+    private Float prix;
+
     @Column(name = "quantity")
     private Integer quantity;
-    public DvdRepositoryModel(String name, String genre, Integer quantity) {
+
+    public DvdRepositoryModel(String name, String genre, Integer quantity, Float prix) {
         this.name = name;
         this.genre = genre;
         this.quantity = quantity;
+        this.prix = prix;
     }
+
 }

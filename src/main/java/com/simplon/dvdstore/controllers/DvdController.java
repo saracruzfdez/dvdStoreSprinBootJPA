@@ -15,7 +15,7 @@ public class DvdController {
 
     @PostMapping
     public boolean addDvdToStore(@RequestBody DvdDTO dvdDTO) {
-        DvdServiceModel dvdServiceModel = new DvdServiceModel(dvdDTO.getName(), dvdDTO.getGenre(), dvdDTO.getQuantity());
+        DvdServiceModel dvdServiceModel = new DvdServiceModel(dvdDTO.getName(), dvdDTO.getGenre(), dvdDTO.getQuantity(), dvdDTO.getPrix());
         return dvdService.add(dvdServiceModel);
     }
 
@@ -24,7 +24,7 @@ public class DvdController {
         ArrayList<DvdDTO> dvdDTOS = new ArrayList<>();
         ArrayList<DvdServiceModel> dvdServiceModelArrayList = dvdService.getAll();
         for (DvdServiceModel x : dvdServiceModelArrayList) {
-            dvdDTOS.add(new DvdDTO(x.getName(), x.getGenre(), x.getQuantity()));
+            dvdDTOS.add(new DvdDTO(x.getName(), x.getGenre(), x.getQuantity(), x.getPrix()));
         }
         return dvdDTOS;
     }
@@ -32,7 +32,7 @@ public class DvdController {
     @GetMapping("/{id}")
     public DvdDTO getById(@PathVariable Long id) {
         DvdServiceModel dvdServiceModel = dvdService.getById(id);
-        return new DvdDTO(dvdServiceModel.getName(), dvdServiceModel.getGenre(), dvdServiceModel.getQuantity());
+        return new DvdDTO(dvdServiceModel.getName(), dvdServiceModel.getGenre(), dvdServiceModel.getQuantity(), dvdServiceModel.getPrix());
     }
 
     @DeleteMapping("/delete/{id}")
@@ -43,6 +43,6 @@ public class DvdController {
     @PutMapping("/update/{id}")
     public boolean update(@PathVariable("id") Long id, @RequestBody DvdDTO dvdDTO) {
 
-        return dvdService.update(id, new DvdServiceModel(dvdDTO.getName(), dvdDTO.getGenre(), dvdDTO.getQuantity()));
+        return dvdService.update(id, new DvdServiceModel(dvdDTO.getName(), dvdDTO.getGenre(), dvdDTO.getQuantity(), dvdDTO.getPrix()));
     }
 }

@@ -9,4 +9,5 @@ public class DvdDTO {
     private String name;  // Nombre del DVD.
     private String genre; // Género del DVD.
     private Integer quantity;
+    private Float prix;
 }

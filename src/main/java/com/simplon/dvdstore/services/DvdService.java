@@ -14,7 +14,7 @@ public class DvdService {
     @Autowired
     DvdRepository dvdRepository;
     public boolean add(DvdServiceModel dvdServiceModel) {
-        DvdRepositoryModel dvdRepositoryModel = new DvdRepositoryModel(dvdServiceModel.getName(), dvdServiceModel.getGenre(), dvdServiceModel.getQuantity());
+        DvdRepositoryModel dvdRepositoryModel = new DvdRepositoryModel(dvdServiceModel.getName(), dvdServiceModel.getGenre(), dvdServiceModel.getQuantity(), dvdServiceModel.getPrix());
         DvdRepositoryModel dvdRepositoryModelReturned = dvdRepository.save(dvdRepositoryModel);
         return dvdRepositoryModelReturned != null;
     }
@@ -22,13 +22,13 @@ public class DvdService {
         ArrayList<DvdServiceModel> dvdServiceModel = new ArrayList<>();
         ArrayList<DvdRepositoryModel> dvdRepositoryModelArrayList = dvdRepository.findAll();
         for (DvdRepositoryModel x : dvdRepositoryModelArrayList) {
-            dvdServiceModel.add(new DvdServiceModel(x.getName(), x.getGenre(), x.getQuantity()));
+            dvdServiceModel.add(new DvdServiceModel(x.getName(), x.getGenre(), x.getQuantity(), x.getPrix()));
         }
         return dvdServiceModel;
     }
     public DvdServiceModel getById(Long id) {
         DvdRepositoryModel dvdRepositoryModel = dvdRepository.findById(id).get();
-        return new DvdServiceModel(dvdRepositoryModel.getName(), dvdRepositoryModel.getGenre(), dvdRepositoryModel.getQuantity());
+        return new DvdServiceModel(dvdRepositoryModel.getName(), dvdRepositoryModel.getGenre(), dvdRepositoryModel.getQuantity(), dvdRepositoryModel.getPrix());
     }
     public void deleteById(Long id) {
         dvdRepository.deleteById(id);

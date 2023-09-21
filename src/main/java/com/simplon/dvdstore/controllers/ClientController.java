@@ -39,6 +39,30 @@ public class ClientController {
         return new ClientDTO(clientServiceModel.getName(), clientServiceModel.getEmail());
     }
 
+@DeleteMapping("/delete/{id}")
+    public void deleteById(@PathVariable Long id){clientService.deleteById(id);}
+
+    @PutMapping("/update/{id}")
+    public boolean update(@PathVariable("id") Long id, @RequestBody ClientDTO clientDTO){
+        return  clientService.update(id, new ClientServiceModel(clientDTO.getName(), clientDTO.getEmail()));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

@@ -2,9 +2,10 @@ package com.simplon.dvdstore.services;
 
 import com.simplon.dvdstore.repositories.ClientRepository;
 import com.simplon.dvdstore.repositories.ClientRepositoryModel;
-import com.simplon.dvdstore.repositories.DvdRepositoryModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 
@@ -31,5 +32,21 @@ public class ClientService {
     public ClientServiceModel getById(Long id) {
         ClientRepositoryModel clientRepositoryModel = clientRepository.findById(id).get();
         return new ClientServiceModel(clientRepositoryModel.getName(), clientRepositoryModel.getEmail());
+    }
+
+    public void deleteById(Long id) {
+        clientRepository.deleteById(id);
+    }
+
+    public boolean update(@PathVariable Long id, @RequestBody ClientServiceModel clientServiceModel) {
+        try {
+            ClientRepositoryModel clientRepositoryModel = clientRepository.findById(id).get();
+            clientRepositoryModel.setName(clientServiceModel.getName());
+            clientRepositoryModel.setEmail(clientServiceModel.getEmail());
+            clientRepository.save(clientRepositoryModel);
+            return clientServiceModel != null;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
