@@ -15,10 +15,12 @@ public class VenteServiceModel {
    private Long client_id;
    private Long dvd_id;
    private int quantity;
+   private float total;
 
-    public VenteServiceModel(Long client_id, Long dvd_id, int quantity) {
+    public VenteServiceModel(Long client_id, Long dvd_id, int quantity, float total) {
         this.client_id = client_id;
         this.dvd_id = dvd_id;
         this.quantity = quantity;
+        this.total = total;
     }
 }

@@ -17,7 +17,7 @@ public class VenteController {
 
     @PostMapping
     public boolean addVenteToStore(@RequestBody VenteDTO venteDTO){
-        VenteServiceModel venteServiceModel = new VenteServiceModel( venteDTO.client_id(), venteDTO.dvd_id(),venteDTO.quantity());
+        VenteServiceModel venteServiceModel = new VenteServiceModel( venteDTO.client_id(), venteDTO.dvd_id(),venteDTO.quantity(), venteDTO.total());
         return venteService.add(venteServiceModel);
     }
 

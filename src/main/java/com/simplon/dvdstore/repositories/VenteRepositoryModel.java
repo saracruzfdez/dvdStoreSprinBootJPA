@@ -44,9 +44,10 @@ public class VenteRepositoryModel {
     @Column(name="quantity")
     private int quantity;
 
-    public VenteRepositoryModel(ClientRepositoryModel clientRepositoryModel, DvdRepositoryModel dvdRepositoryModel, int quantity) {
+    public VenteRepositoryModel(ClientRepositoryModel clientRepositoryModel, DvdRepositoryModel dvdRepositoryModel, int quantity, float total) {
         this.clientRepositoryModel = clientRepositoryModel;
         this.dvdRepositoryModel = dvdRepositoryModel;
         this.quantity = quantity;
+        this.total = total;
     }
 }

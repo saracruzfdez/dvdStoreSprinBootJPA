@@ -19,19 +19,11 @@ public class VenteService {
     public boolean add(VenteServiceModel venteServiceModel) {
         ClientRepositoryModel clientRepositoryModel = clientRepository.findById(venteServiceModel.getClient_id()).get();
         DvdRepositoryModel dvdRepositoryModel = dvdRepository.findById(venteServiceModel.getDvd_id()).get();
-
-
         
-//ici je calcul le total prix = venteServiceModel.getQuantity() * dvdRepositoryModel.getPrice();
+        float total;
+        total = venteServiceModel.getQuantity() * dvdRepositoryModel.getPrix();
 
-
-
-
-
-
-
-
-        VenteRepositoryModel venteRepositoryModel = new VenteRepositoryModel(clientRepositoryModel, dvdRepositoryModel, venteServiceModel.getQuantity());
+        VenteRepositoryModel venteRepositoryModel = new VenteRepositoryModel(clientRepositoryModel, dvdRepositoryModel, venteServiceModel.getQuantity(), total);
 
         Object object = venteRepository.save(venteRepositoryModel);
 
