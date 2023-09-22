@@ -12,16 +12,27 @@ import java.util.Optional;
 @NoArgsConstructor
 public class VenteServiceModel {
    private Optional<Long> id;
-   private Long client_id;
-   private Long dvd_id;
+   private Optional<Long> client_id;
+   private Optional<Long> dvd_id;
    private int quantity;
    private float total;
+   private Optional<DvdServiceModel> dvd;
+   private Optional<ClientServiceModel> client;
 
-    public VenteServiceModel(Long client_id, Long dvd_id, int quantity, float total) {
+   // POST
+    public VenteServiceModel(Optional<Long> client_id, Optional<Long> dvd_id, int quantity, float total) {
         this.client_id = client_id;
         this.dvd_id = dvd_id;
         this.quantity = quantity;
         this.total = total;
     }
 
+    // GETS
+    public VenteServiceModel(Optional<Long> id, int quantity, Float total, Optional<DvdServiceModel> dvd, Optional<ClientServiceModel> client) {
+        this.id = id;
+        this.quantity = quantity;
+        this.total = total;
+        this.dvd = dvd;
+        this.client = client;
+    }
 }

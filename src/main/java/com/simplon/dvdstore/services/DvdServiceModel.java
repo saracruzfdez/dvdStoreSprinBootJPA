@@ -14,4 +14,9 @@ public class DvdServiceModel {
     private Integer quantity;
     private Float prix;
 
+    public DvdServiceModel(String name, String genre) {
+        this.name = name;
+        this.genre = genre;
+    }
 }
+

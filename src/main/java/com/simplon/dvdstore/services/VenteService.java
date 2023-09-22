@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Service
 public class VenteService {
@@ -20,9 +21,9 @@ public class VenteService {
 
     public boolean add(VenteServiceModel venteServiceModel) {
 
-        ClientRepositoryModel clientRepositoryModel = clientRepository.findById(venteServiceModel.getClient_id()).get();
+        ClientRepositoryModel clientRepositoryModel = clientRepository.findById(venteServiceModel.getClient_id().get()).get();
 
-        DvdRepositoryModel dvdRepositoryModel = dvdRepository.findById(venteServiceModel.getDvd_id()).get();
+        DvdRepositoryModel dvdRepositoryModel = dvdRepository.findById(venteServiceModel.getDvd_id().get()).get();
 
         float total;
         total = venteServiceModel.getQuantity() * dvdRepositoryModel.getPrix();
@@ -37,16 +38,19 @@ public class VenteService {
 
     public ArrayList<VenteServiceModel> getAll() {
 
-        ArrayList<VenteServiceModel> venteServiceModel = new ArrayList<>();
+        ArrayList<VenteServiceModel> venteServiceModelArrayList = new ArrayList<>();
         ArrayList<VenteRepositoryModel> venteRepositoryModelArrayList = venteRepository.findAll();
 
-        for (VenteRepositoryModel x : venteRepositoryModelArrayList) {
+        for (VenteRepositoryModel vente : venteRepositoryModelArrayList) {
 
-            venteServiceModel.add(new VenteServiceModel(x.getClientRepositoryModel().getId(), x.getDvdRepositoryModel().getId(), x.getQuantity(), x.getTotal()));
+            ClientServiceModel clientServiceModel = new ClientServiceModel(vente.getClientRepositoryModel().getName(), vente.getClientRepositoryModel().getEmail());
 
+            DvdServiceModel dvdRepositoryModel =  new DvdServiceModel(vente.getDvdRepositoryModel().getName(), vente.getDvdRepositoryModel().getGenre());
+
+            venteServiceModelArrayList.add(new VenteServiceModel(Optional.ofNullable(vente.getId()), vente.getQuantity(), vente.getTotal(), Optional.ofNullable(dvdRepositoryModel),Optional.ofNullable(clientServiceModel)));
         }
 
-        return venteServiceModel;
+        return venteServiceModelArrayList;
 
     }
 }
