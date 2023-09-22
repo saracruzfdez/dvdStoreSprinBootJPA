@@ -4,6 +4,8 @@ import com.simplon.dvdstore.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @Service
 public class VenteService {
 
@@ -17,9 +19,11 @@ public class VenteService {
     DvdRepository dvdRepository;
 
     public boolean add(VenteServiceModel venteServiceModel) {
+
         ClientRepositoryModel clientRepositoryModel = clientRepository.findById(venteServiceModel.getClient_id()).get();
+
         DvdRepositoryModel dvdRepositoryModel = dvdRepository.findById(venteServiceModel.getDvd_id()).get();
-        
+
         float total;
         total = venteServiceModel.getQuantity() * dvdRepositoryModel.getPrix();
 
@@ -28,5 +32,21 @@ public class VenteService {
         Object object = venteRepository.save(venteRepositoryModel);
 
         return object != null;
+
+    }
+
+    public ArrayList<VenteServiceModel> getAll() {
+
+        ArrayList<VenteServiceModel> venteServiceModel = new ArrayList<>();
+        ArrayList<VenteRepositoryModel> venteRepositoryModelArrayList = venteRepository.findAll();
+
+        for (VenteRepositoryModel x : venteRepositoryModelArrayList) {
+
+            venteServiceModel.add(new VenteServiceModel(x.getClientRepositoryModel().getId(), x.getDvdRepositoryModel().getId(), x.getQuantity(), x.getTotal()));
+
+        }
+
+        return venteServiceModel;
+
     }
 }

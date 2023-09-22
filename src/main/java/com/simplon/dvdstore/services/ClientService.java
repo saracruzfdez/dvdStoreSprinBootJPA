@@ -20,6 +20,9 @@ public class ClientService {
         return clientRepositoryModelReturned != null;
     }
 
+
+
+
     public ArrayList<ClientServiceModel> getAll() {
         ArrayList<ClientServiceModel> clientServiceModel = new ArrayList<>();
         ArrayList<ClientRepositoryModel> clientRepositoryModelArrayList = clientRepository.findAll();

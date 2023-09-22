@@ -19,6 +19,7 @@ public class DvdService {
         return dvdRepositoryModelReturned != null;
     }
     public ArrayList<DvdServiceModel> getAll() {
+
         ArrayList<DvdServiceModel> dvdServiceModel = new ArrayList<>();
         ArrayList<DvdRepositoryModel> dvdRepositoryModelArrayList = dvdRepository.findAll();
         for (DvdRepositoryModel x : dvdRepositoryModelArrayList) {
@@ -26,6 +27,7 @@ public class DvdService {
         }
         return dvdServiceModel;
     }
+
     public DvdServiceModel getById(Long id) {
         DvdRepositoryModel dvdRepositoryModel = dvdRepository.findById(id).get();
         return new DvdServiceModel(dvdRepositoryModel.getName(), dvdRepositoryModel.getGenre(), dvdRepositoryModel.getQuantity(), dvdRepositoryModel.getPrix());

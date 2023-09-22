@@ -50,4 +50,6 @@ public class VenteRepositoryModel {
         this.quantity = quantity;
         this.total = total;
     }
+
+
 }

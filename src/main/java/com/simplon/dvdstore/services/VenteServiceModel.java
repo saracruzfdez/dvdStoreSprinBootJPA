@@ -23,4 +23,5 @@ public class VenteServiceModel {
         this.quantity = quantity;
         this.total = total;
     }
+
 }
