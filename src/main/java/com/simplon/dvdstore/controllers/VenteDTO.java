@@ -1,7 +1,7 @@
 package com.simplon.dvdstore.controllers;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-public record VenteDTO(Long client_id, Long dvd_id, int quantity, float total) {
+public record VenteDTO(Long client_id, Long dvd_id, int quantity, float total, LocalDate localDate) {
 }
 

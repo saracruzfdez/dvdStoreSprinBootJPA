@@ -21,7 +21,8 @@ public class VenteController {
                 Optional.ofNullable(venteDTO.client_id()),
                 Optional.ofNullable(venteDTO.dvd_id()),
                 venteDTO.quantity(),
-                venteDTO.total());
+                venteDTO.total(),
+                venteDTO.localDate());
         return venteService.add(venteServiceModel);
     }
 
@@ -51,7 +52,7 @@ public class VenteController {
                     dvdDTO,
                     x.getQuantity(),
                     x.getTotal(),
-                    x.getDate()
+                    x.getLocalDate()
             ));
         }
 

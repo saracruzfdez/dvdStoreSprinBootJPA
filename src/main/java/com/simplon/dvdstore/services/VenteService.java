@@ -25,15 +25,11 @@ public class VenteService {
 
         DvdRepositoryModel dvdRepositoryModel = dvdRepository.findById(venteServiceModel.getDvd_id().get()).get();
 
-        float total;
-        total = venteServiceModel.getQuantity() * dvdRepositoryModel.getPrix();
-
-        VenteRepositoryModel venteRepositoryModel = new VenteRepositoryModel(clientRepositoryModel, dvdRepositoryModel, venteServiceModel.getQuantity(), total);
+        VenteRepositoryModel venteRepositoryModel = new VenteRepositoryModel(clientRepositoryModel, dvdRepositoryModel, venteServiceModel.getQuantity(), venteServiceModel.getTotal());
 
         Object object = venteRepository.save(venteRepositoryModel);
 
         return object != null;
-
     }
 
     public ArrayList<VenteServiceModel> getAll() {
@@ -47,7 +43,7 @@ public class VenteService {
 
             DvdServiceModel dvdRepositoryModel = new DvdServiceModel(vente.getDvdRepositoryModel().getName(), vente.getDvdRepositoryModel().getGenre(), vente.getDvdRepositoryModel().getPrix(), vente.getDvdRepositoryModel().getQuantity());
 
-            venteServiceModelArrayList.add(new VenteServiceModel(Optional.ofNullable(vente.getId()), vente.getQuantity(), vente.getTotal(), Optional.ofNullable(dvdRepositoryModel), Optional.ofNullable(clientServiceModel), vente.getDate()));
+            venteServiceModelArrayList.add(new VenteServiceModel(Optional.ofNullable(vente.getId()), vente.getQuantity(), vente.getTotal(), Optional.ofNullable(dvdRepositoryModel), Optional.ofNullable(clientServiceModel), vente.getLocalDate()));
         }
         return venteServiceModelArrayList;
     }
