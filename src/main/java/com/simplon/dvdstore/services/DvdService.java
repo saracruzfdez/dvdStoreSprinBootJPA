@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Service
 public class DvdService {
@@ -25,14 +26,14 @@ public class DvdService {
         ArrayList<DvdServiceModel> dvdServiceModel = new ArrayList<>();
         ArrayList<DvdRepositoryModel> dvdRepositoryModelArrayList = dvdRepository.findAll();
         for (DvdRepositoryModel x : dvdRepositoryModelArrayList) {
-            dvdServiceModel.add(new DvdServiceModel(x.getName(), x.getGenre(), x.getQuantity(), x.getPrix()));
+            dvdServiceModel.add(new DvdServiceModel(Optional.ofNullable(x.getId()), x.getName(), x.getGenre(), x.getQuantity(), x.getPrix()));
         }
         return dvdServiceModel;
     }
 
     public DvdServiceModel getById(Long id) {
         DvdRepositoryModel dvdRepositoryModel = dvdRepository.findById(id).get();
-        return new DvdServiceModel(dvdRepositoryModel.getName(), dvdRepositoryModel.getGenre(), dvdRepositoryModel.getQuantity(), dvdRepositoryModel.getPrix());
+        return new DvdServiceModel(Optional.ofNullable(dvdRepositoryModel.getId()), dvdRepositoryModel.getName(), dvdRepositoryModel.getGenre(), dvdRepositoryModel.getQuantity(), dvdRepositoryModel.getPrix());
     }
 
     public void deleteById(Long id) {
