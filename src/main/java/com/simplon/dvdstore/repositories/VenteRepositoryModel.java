@@ -10,6 +10,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -26,12 +27,10 @@ public class VenteRepositoryModel {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")
-    //@OnDelete(action = OnDeleteAction.CASCADE)
     private ClientRepositoryModel clientRepositoryModel;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "dvd_id")
-    //@OnDelete(action = OnDeleteAction.CASCADE)
     private DvdRepositoryModel dvdRepositoryModel;
 
     @Column(name = "total")
@@ -39,9 +38,10 @@ public class VenteRepositoryModel {
 
     @Column(name = "date")
     @CreationTimestamp
+    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     private Date date;
 
-    @Column(name="quantity")
+    @Column(name = "quantity")
     private int quantity;
 
     public VenteRepositoryModel(ClientRepositoryModel clientRepositoryModel, DvdRepositoryModel dvdRepositoryModel, int quantity, float total) {
@@ -50,6 +50,4 @@ public class VenteRepositoryModel {
         this.quantity = quantity;
         this.total = total;
     }
-
-
 }

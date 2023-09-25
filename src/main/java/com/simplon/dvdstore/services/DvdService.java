@@ -13,11 +13,13 @@ import java.util.ArrayList;
 public class DvdService {
     @Autowired
     DvdRepository dvdRepository;
+
     public boolean add(DvdServiceModel dvdServiceModel) {
         DvdRepositoryModel dvdRepositoryModel = new DvdRepositoryModel(dvdServiceModel.getName(), dvdServiceModel.getGenre(), dvdServiceModel.getQuantity(), dvdServiceModel.getPrix());
         DvdRepositoryModel dvdRepositoryModelReturned = dvdRepository.save(dvdRepositoryModel);
         return dvdRepositoryModelReturned != null;
     }
+
     public ArrayList<DvdServiceModel> getAll() {
 
         ArrayList<DvdServiceModel> dvdServiceModel = new ArrayList<>();
@@ -32,20 +34,22 @@ public class DvdService {
         DvdRepositoryModel dvdRepositoryModel = dvdRepository.findById(id).get();
         return new DvdServiceModel(dvdRepositoryModel.getName(), dvdRepositoryModel.getGenre(), dvdRepositoryModel.getQuantity(), dvdRepositoryModel.getPrix());
     }
+
     public void deleteById(Long id) {
         dvdRepository.deleteById(id);
     }
-    public boolean update(@PathVariable Long id, @RequestBody DvdServiceModel dvdServiceModel){
-    try{
-        DvdRepositoryModel dvdRepositoryModel=dvdRepository.findById(id).get();
-        dvdRepositoryModel.setName(dvdServiceModel.getName());
-        dvdRepositoryModel.setGenre(dvdServiceModel.getGenre());
-        dvdRepositoryModel.setQuantity(dvdServiceModel.getQuantity());
-        dvdRepository.save(dvdRepositoryModel);
-        return dvdServiceModel != null;
 
-    }catch (Exception e){
-        return false;
+    public boolean update(@PathVariable Long id, @RequestBody DvdServiceModel dvdServiceModel) {
+        try {
+            DvdRepositoryModel dvdRepositoryModel = dvdRepository.findById(id).get();
+            dvdRepositoryModel.setName(dvdServiceModel.getName());
+            dvdRepositoryModel.setGenre(dvdServiceModel.getGenre());
+            dvdRepositoryModel.setQuantity(dvdServiceModel.getQuantity());
+            dvdRepository.save(dvdRepositoryModel);
+            return dvdServiceModel != null;
+
+        } catch (Exception e) {
+            return false;
         }
     }
 }

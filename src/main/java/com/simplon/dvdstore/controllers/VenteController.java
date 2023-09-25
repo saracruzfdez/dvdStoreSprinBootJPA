@@ -1,6 +1,5 @@
 package com.simplon.dvdstore.controllers;
 
-import com.simplon.dvdstore.services.DvdServiceModel;
 import com.simplon.dvdstore.services.VenteService;
 import com.simplon.dvdstore.services.VenteServiceModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,7 @@ public class VenteController {
     VenteService venteService;
 
     @PostMapping
-    public boolean addVenteToStore(@RequestBody VenteDTO venteDTO){
+    public boolean addVenteToStore(@RequestBody VenteDTO venteDTO) {
         VenteServiceModel venteServiceModel = new VenteServiceModel(
                 Optional.ofNullable(venteDTO.client_id()),
                 Optional.ofNullable(venteDTO.dvd_id()),
@@ -27,19 +26,18 @@ public class VenteController {
     }
 
     @GetMapping
-    public ArrayList<VenteGetDTO> getAll(){
+    public ArrayList<VenteGetDTO> getAll() {
         ArrayList<VenteGetDTO> venteGetDTOS = new ArrayList<>();
 
         ArrayList<VenteServiceModel> venteServiceModelArrayList = venteService.getAll();
 
-        for (VenteServiceModel x : venteServiceModelArrayList){
+        for (VenteServiceModel x : venteServiceModelArrayList) {
             // mapper client service -> dto
-           ClientDTO clientDTO = new ClientDTO(
-                   x.getClient().get().getName(),
-                   x.getClient().get().getEmail()
-           );
-
-           // mapper dvd service -> dto
+            ClientDTO clientDTO = new ClientDTO(
+                    x.getClient().get().getName(),
+                    x.getClient().get().getEmail()
+            );
+            // mapper dvd service -> dto
             DvdDTO dvdDTO = new DvdDTO(
                     x.getDvd().get().getName(),
                     x.getDvd().get().getGenre(),
@@ -52,12 +50,11 @@ public class VenteController {
                     clientDTO,
                     dvdDTO,
                     x.getQuantity(),
-                    x.getTotal()
+                    x.getTotal(),
+                    x.getDate()
             ));
         }
 
         return venteGetDTOS;
-
     }
-
 }

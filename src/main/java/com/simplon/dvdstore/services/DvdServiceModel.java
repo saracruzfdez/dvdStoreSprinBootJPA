@@ -1,6 +1,5 @@
 package com.simplon.dvdstore.services;
 
-import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,9 +13,11 @@ public class DvdServiceModel {
     private Integer quantity;
     private Float prix;
 
-    public DvdServiceModel(String name, String genre) {
+    public DvdServiceModel(String name, String genre, Float prix, Integer quantity) {
         this.name = name;
         this.genre = genre;
+        this.prix = prix;
+        this.quantity = quantity;
     }
 }
 

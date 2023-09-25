@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Service
 public class ClientService {
@@ -20,21 +21,18 @@ public class ClientService {
         return clientRepositoryModelReturned != null;
     }
 
-
-
-
     public ArrayList<ClientServiceModel> getAll() {
         ArrayList<ClientServiceModel> clientServiceModel = new ArrayList<>();
         ArrayList<ClientRepositoryModel> clientRepositoryModelArrayList = clientRepository.findAll();
         for (ClientRepositoryModel j : clientRepositoryModelArrayList) {
-            clientServiceModel.add(new ClientServiceModel(j.getName(), j.getEmail()));
+            clientServiceModel.add(new ClientServiceModel(Optional.ofNullable(j.getId()), j.getName(), j.getEmail()));
         }
         return clientServiceModel;
     }
 
     public ClientServiceModel getById(Long id) {
         ClientRepositoryModel clientRepositoryModel = clientRepository.findById(id).get();
-        return new ClientServiceModel(clientRepositoryModel.getName(), clientRepositoryModel.getEmail());
+        return new ClientServiceModel(Optional.ofNullable(clientRepositoryModel.getId()),clientRepositoryModel.getName(), clientRepositoryModel.getEmail());
     }
 
     public void deleteById(Long id) {

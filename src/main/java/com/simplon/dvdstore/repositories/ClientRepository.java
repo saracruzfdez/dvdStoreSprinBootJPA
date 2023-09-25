@@ -6,14 +6,8 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 
 @Repository // Anotación que marca la clase como un repositorio Spring
-public interface ClientRepository extends CrudRepository<ClientRepositoryModel, Long>{
-
-    //ClientRepositoryModel save(ClientRepositoryModel clientRepositoryModel);
-
+public interface ClientRepository extends CrudRepository<ClientRepositoryModel, Long> {
     ArrayList<ClientRepositoryModel> findAll();
-
-    //void delete(ClientRepositoryModel clientRepositoryModel);
-
 }
 
 

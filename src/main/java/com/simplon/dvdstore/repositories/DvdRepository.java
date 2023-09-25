@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 @Repository
 public interface DvdRepository extends CrudRepository<DvdRepositoryModel, Long> {
-    DvdRepositoryModel save(DvdRepositoryModel dvdRepositoryModel);
+    // DvdRepositoryModel save(DvdRepositoryModel dvdRepositoryModel);
 
     ArrayList<DvdRepositoryModel> findAll();
 
-    void delete(DvdRepositoryModel dvdRepositoryModel);
+    // void delete(DvdRepositoryModel dvdRepositoryModel);
 }

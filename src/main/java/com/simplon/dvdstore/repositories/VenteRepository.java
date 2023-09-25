@@ -8,9 +8,8 @@ import java.util.ArrayList;
 @Repository
 public interface VenteRepository extends CrudRepository<VenteRepositoryModel, Long> {
 
-VenteRepositoryModel save(ClientRepositoryModel clientRepositoryModel);
+    VenteRepositoryModel save(ClientRepositoryModel clientRepositoryModel);
 
     ArrayList<VenteRepositoryModel> findAll();
-
 
 }
