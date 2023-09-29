@@ -16,7 +16,7 @@ public class DvdService {
     DvdRepository dvdRepository;
 
     public boolean add(DvdServiceModel dvdServiceModel) {
-        DvdRepositoryModel dvdRepositoryModel = new DvdRepositoryModel(dvdServiceModel.getName(), dvdServiceModel.getGenre(), dvdServiceModel.getQuantity(), dvdServiceModel.getPrix());
+        DvdRepositoryModel dvdRepositoryModel = new DvdRepositoryModel(dvdServiceModel.getName(), dvdServiceModel.getGenre(), dvdServiceModel.getQuantity(), dvdServiceModel.getPrix(), dvdServiceModel.getImagePath());
         DvdRepositoryModel dvdRepositoryModelReturned = dvdRepository.save(dvdRepositoryModel);
         return dvdRepositoryModelReturned != null;
     }
@@ -26,14 +26,14 @@ public class DvdService {
         ArrayList<DvdServiceModel> dvdServiceModel = new ArrayList<>();
         ArrayList<DvdRepositoryModel> dvdRepositoryModelArrayList = dvdRepository.findAll();
         for (DvdRepositoryModel x : dvdRepositoryModelArrayList) {
-            dvdServiceModel.add(new DvdServiceModel(Optional.ofNullable(x.getId()), x.getName(), x.getGenre(), x.getQuantity(), x.getPrix()));
+            dvdServiceModel.add(new DvdServiceModel(Optional.ofNullable(x.getId()), x.getName(), x.getGenre(), x.getQuantity(), x.getPrix(), x.getImagePath()));
         }
         return dvdServiceModel;
     }
 
     public DvdServiceModel getById(Long id) {
         DvdRepositoryModel dvdRepositoryModel = dvdRepository.findById(id).get();
-        return new DvdServiceModel(Optional.ofNullable(dvdRepositoryModel.getId()), dvdRepositoryModel.getName(), dvdRepositoryModel.getGenre(), dvdRepositoryModel.getQuantity(), dvdRepositoryModel.getPrix());
+        return new DvdServiceModel(Optional.ofNullable(dvdRepositoryModel.getId()), dvdRepositoryModel.getName(), dvdRepositoryModel.getGenre(), dvdRepositoryModel.getQuantity(), dvdRepositoryModel.getPrix(), dvdRepositoryModel.getImagePath());
     }
 
     public void deleteById(Long id) {

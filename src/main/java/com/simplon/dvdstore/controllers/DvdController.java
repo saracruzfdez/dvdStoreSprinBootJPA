@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("dvds")
 public class DvdController {
     @Autowired
@@ -16,7 +17,7 @@ public class DvdController {
 
     @PostMapping
     public boolean addDvdToStore(@RequestBody DvdDTO dvdDTO) {
-        DvdServiceModel dvdServiceModel = new DvdServiceModel(dvdDTO.getName(), dvdDTO.getGenre(), dvdDTO.getPrix(), dvdDTO.getQuantity());
+        DvdServiceModel dvdServiceModel = new DvdServiceModel(dvdDTO.getName(), dvdDTO.getGenre(), dvdDTO.getPrix(), dvdDTO.getQuantity(), dvdDTO.getImagePath());
         return dvdService.add(dvdServiceModel);
     }
 
@@ -30,7 +31,8 @@ public class DvdController {
                     x.getName(),
                     x.getGenre(),
                     x.getQuantity(),
-                    x.getPrix()));
+                    x.getPrix(),
+                    x.getImagePath()));
         }
         return dvdGetDTOS;
     }
@@ -38,17 +40,17 @@ public class DvdController {
     @GetMapping("/{id}")
     public DvdGetDTO getById(@PathVariable Long id) {
         DvdServiceModel dvdServiceModel = dvdService.getById(id);
-        return new DvdGetDTO(dvdServiceModel.getId(), dvdServiceModel.getName(), dvdServiceModel.getGenre(), dvdServiceModel.getQuantity(), dvdServiceModel.getPrix());
+        return new DvdGetDTO(dvdServiceModel.getId(), dvdServiceModel.getName(), dvdServiceModel.getGenre(), dvdServiceModel.getQuantity(), dvdServiceModel.getPrix(), dvdServiceModel.getImagePath());
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteById(@PathVariable Long id) {
         dvdService.deleteById(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public boolean update(@PathVariable("id") Long id, @RequestBody DvdDTO dvdDTO) {
 
-        return dvdService.update(id, new DvdServiceModel(dvdDTO.getName(), dvdDTO.getGenre(), dvdDTO.getPrix(), dvdDTO.getQuantity()));
+        return dvdService.update(id, new DvdServiceModel(dvdDTO.getName(), dvdDTO.getGenre(), dvdDTO.getPrix(), dvdDTO.getQuantity(), dvdDTO.getImagePath()));
     }
 }

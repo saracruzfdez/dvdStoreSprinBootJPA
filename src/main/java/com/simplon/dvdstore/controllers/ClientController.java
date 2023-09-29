@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController // données JSON grace à REST ou XML
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("clients")
 public class ClientController {
 

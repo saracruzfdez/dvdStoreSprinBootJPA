@@ -13,12 +13,15 @@ public class DvdGetDTO {
     private String genre; // Género del DVD.
     private Integer quantity;
     private Float prix;
+    private String imagePath;
 
-    public DvdGetDTO(Optional<Long> id, String name, String genre, Integer quantity, Float prix) {
+
+    public DvdGetDTO(Optional<Long> id, String name, String genre, Integer quantity, Float prix, String imagePath) {
         this.id = id;
         this.name = name;
         this.genre = genre;
         this.quantity = quantity;
         this.prix = prix;
+        this.imagePath = imagePath;
     }
 }

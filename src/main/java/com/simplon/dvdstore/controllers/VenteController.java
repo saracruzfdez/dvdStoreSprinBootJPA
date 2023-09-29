@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("ventes")
 public class VenteController {
 
@@ -43,7 +44,8 @@ public class VenteController {
                     x.getDvd().get().getName(),
                     x.getDvd().get().getGenre(),
                     x.getDvd().get().getQuantity(),
-                    x.getDvd().get().getPrix()
+                    x.getDvd().get().getPrix(),
+                    x.getDvd().get().getImagePath()
             );
             // Long id, ClientDTO clientDTO, DvdDTO dvdDTO, int quantity, float total
             venteGetDTOS.add(new VenteGetDTO(
