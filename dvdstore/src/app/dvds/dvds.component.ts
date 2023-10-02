@@ -22,7 +22,7 @@ export class DvdsComponent implements OnInit {
       // Normalizar las URLs en la propiedad image_path sin sanitizer
       this.dvds = data.map((dvd: any) => ({
         ...dvd,
-        imagePath: dvd.imagePath ? dvd.imagePath.replace(/\\/g, '/') : undefined
+        image_path: dvd.image_path ? dvd.image_path.replace(/\\/g, '/') : undefined
       }));
 
       console.log("Recuperando la data después de replace:", this.dvds);

@@ -1,0 +1,41 @@
+<div class="mt-5">
+
+    <div class="container white justify-content-center">
+
+        <form #form="ngForm" class="m-auto p-3" (submit)="formulaire(form)">
+
+            <div class="form-group">
+                <label for="name">Titre</label>
+                <input [(ngModel)]="dvd.name" type="text" class="form-control" id="name" name="name" />
+            </div>
+            
+            <!-- Rendre dynamique avec un select, aussi dans le menu dvds :" -->
+            <div class="form-group">
+                <label for="genre">Genre</label>
+                <input [(ngModel)]="dvd.genre" type="text" class="form-control" id="genre" name="genre" />
+            </div>
+
+            <div class="form-group">
+                <label for="prix">Prix</label>
+                <input [(ngModel)]="dvd.prix" type="number" class="form-control" id="prix"
+                    name="prix" />
+                </div>
+                
+            <div class="form-group">
+                <label for="quantite">Quantité</label>
+                <input [(ngModel)]="dvd.quantity" type="number" class="form-control" id="quantite"
+                        name="quantite" />
+            </div>
+
+            <div class="form-group">
+                <label for="imagePath">Photo</label>
+                <input [(ngModel)]="dvd.image_path" type="text" name="imagePath" class="form-control-file" id="imagePath">
+            </div>
+
+            <input type="hidden" name="id" [(ngModel)]="dvd.id">
+
+            <button type="submit" class="btn mt-3 btn-primary">Ajouter</button>
+
+        </form>
+    </div>
+</div>
