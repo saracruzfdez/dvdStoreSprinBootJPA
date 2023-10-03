@@ -22,7 +22,6 @@ export class DvdFormComponent {
   }
 
   isUpdate: boolean = false;
-
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
@@ -30,7 +29,6 @@ export class DvdFormComponent {
       this.isUpdate = true;
       // Llama a tu servicio para obtener los detalles del DVD por ID y actualiza this.dvd
       this.dvdService.getById(Number(id)).subscribe((dvd) => {
-       
         this.dvd = dvd;
       });
     }
@@ -38,15 +36,11 @@ export class DvdFormComponent {
 
   formulaire(form: NgForm) {
     console.log(form.value)
-
     if (form.valid) {
       if (this.isUpdate) {
         // Estás en modo de actualización, llama a actualizar
         this.dvdService.addOrUpdate(this.dvd).subscribe(() => {
-
-
                 console.log('El campo de imagen está vacío en el modo de creación.');
-
           // Lógica adicional después de la actualización
           this.router.navigate(['/dvds']); // Por ejemplo, redirige a la lista de DVDs
         });

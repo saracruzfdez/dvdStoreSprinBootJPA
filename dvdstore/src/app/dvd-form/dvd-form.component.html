@@ -1,35 +1,39 @@
-<div class="mt-5">
+<app-dvd-form-menu></app-dvd-form-menu>
 
-    <div class="container white justify-content-center">
+<div class="container bg-white ">
 
-        <form #form="ngForm" class="m-auto p-3" (submit)="formulaire(form)">
+    <div class="justify-content-center p-3">
 
-            <div class="form-group">
+        <form #form="ngForm" class="m-auto p-3 w-50 border" (submit)="formulaire(form)">
+
+            <h4 class="pb-2">Ajouter un film</h4>
+
+            <div class="form-group pb-2">
                 <label for="name">Titre</label>
                 <input [(ngModel)]="dvd.name" type="text" class="form-control" id="name" name="name" />
             </div>
             
             <!-- Rendre dynamique avec un select, aussi dans le menu dvds :" -->
-            <div class="form-group">
+            <div class="form-group pb-2">
                 <label for="genre">Genre</label>
                 <input [(ngModel)]="dvd.genre" type="text" class="form-control" id="genre" name="genre" />
             </div>
 
-            <div class="form-group">
+            <div class="form-group pb-2">
                 <label for="prix">Prix</label>
                 <input [(ngModel)]="dvd.prix" type="number" class="form-control" id="prix"
                     name="prix" />
                 </div>
                 
-            <div class="form-group">
-                <label for="quantite">Quantité</label>
+                <div class="form-group pb-2">
+                    <label for="quantite">Quantité</label>
                 <input [(ngModel)]="dvd.quantity" type="number" class="form-control" id="quantite"
                         name="quantite" />
             </div>
 
-            <div class="form-group">
-                <label for="imagePath">Photo</label>
-                <input [(ngModel)]="dvd.image_path" type="text" name="imagePath" class="form-control-file" id="imagePath">
+            <div class="form-group pb-2">
+                <label for="image_path">Photo</label>
+                <input [(ngModel)]="dvd.image_path" type="text" name="image_path" class="form-control" id="image_path">
             </div>
 
             <input type="hidden" name="id" [(ngModel)]="dvd.id">
