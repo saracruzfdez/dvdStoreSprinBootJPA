@@ -30,7 +30,6 @@ public class DvdRepositoryModel {
     @Column(name="image_path")
     private String image_path;
 
-
     public DvdRepositoryModel(String name, String genre, Integer quantity, Float prix, String image_path) {
         this.name = name;
         this.genre = genre;
@@ -38,5 +37,4 @@ public class DvdRepositoryModel {
         this.prix = prix;
         this.image_path = image_path;
     }
-
 }
