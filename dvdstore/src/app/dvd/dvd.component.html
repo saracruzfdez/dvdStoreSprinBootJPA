@@ -18,9 +18,7 @@
 
             <a [routerLink]="['/dvd-form', dvd.id]" class="card-link btn btn-outline-danger btn-sm">Modifier</a>
 
-
-
-            <a class="card-link btn btn-outline-danger btn-sm">Supprimer</a>
+            <a (click)="delete(dvd.id)" class="card-link btn btn-outline-danger btn-sm">Supprimer</a>
             
             </div>
           </div>

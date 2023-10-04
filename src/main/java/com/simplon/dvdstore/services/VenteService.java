@@ -41,7 +41,7 @@ public class VenteService {
 
             ClientServiceModel clientServiceModel = new ClientServiceModel(vente.getClientRepositoryModel().getName(), vente.getClientRepositoryModel().getEmail());
 
-            DvdServiceModel dvdRepositoryModel = new DvdServiceModel(vente.getDvdRepositoryModel().getName(), vente.getDvdRepositoryModel().getGenre(), vente.getDvdRepositoryModel().getPrix(), vente.getDvdRepositoryModel().getQuantity(), vente.getDvdRepositoryModel().getImagePath());
+            DvdServiceModel dvdRepositoryModel = new DvdServiceModel(vente.getDvdRepositoryModel().getName(), vente.getDvdRepositoryModel().getGenre(), vente.getDvdRepositoryModel().getPrix(), vente.getDvdRepositoryModel().getQuantity(), vente.getDvdRepositoryModel().getImage_path());
 
             venteServiceModelArrayList.add(new VenteServiceModel(Optional.ofNullable(vente.getId()), vente.getQuantity(), vente.getTotal(), Optional.ofNullable(dvdRepositoryModel), Optional.ofNullable(clientServiceModel), vente.getLocalDate()));
         }

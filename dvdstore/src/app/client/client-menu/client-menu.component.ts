@@ -13,14 +13,14 @@ export class ClientMenuComponent implements OnInit {
   client: any;
 
   constructor(private clientsService: ClientsService, private route: ActivatedRoute) {}
-  ngOnInit(): void {
+
+  ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
     console.log(this.id)
-    
-   this.clientsService.getById(this.id).subscribe((clientData)=>{
-    this.client=clientData;
-   })
-    
-    
-    }
+
+    this.clientsService.getById(this.id).subscribe((clientData) => {
+      console.log(clientData)
+      this.client = clientData;
+    })
+  }
 }

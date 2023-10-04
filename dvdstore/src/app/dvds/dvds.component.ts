@@ -26,7 +26,6 @@ export class DvdsComponent implements OnInit {
       }));
 
       console.log("Recuperando la data después de replace:", this.dvds);
-
     });
   }
 }

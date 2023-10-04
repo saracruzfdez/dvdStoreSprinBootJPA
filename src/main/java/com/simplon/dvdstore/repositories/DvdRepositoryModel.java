@@ -27,16 +27,16 @@ public class DvdRepositoryModel {
     @Column(name = "quantity")
     private Integer quantity;
 
-    @Column(name="imagePath")
-    private String imagePath;
+    @Column(name="image_path")
+    private String image_path;
 
 
-    public DvdRepositoryModel(String name, String genre, Integer quantity, Float prix, String imagePath) {
+    public DvdRepositoryModel(String name, String genre, Integer quantity, Float prix, String image_path) {
         this.name = name;
         this.genre = genre;
         this.quantity = quantity;
         this.prix = prix;
-        this.imagePath = imagePath;
+        this.image_path = image_path;
     }
 
 }

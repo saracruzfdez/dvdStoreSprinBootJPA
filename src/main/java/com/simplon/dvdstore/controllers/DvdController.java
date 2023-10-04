@@ -17,7 +17,7 @@ public class DvdController {
 
     @PostMapping
     public boolean addDvdToStore(@RequestBody DvdDTO dvdDTO) {
-        DvdServiceModel dvdServiceModel = new DvdServiceModel(dvdDTO.getName(), dvdDTO.getGenre(), dvdDTO.getPrix(), dvdDTO.getQuantity(), dvdDTO.getImagePath());
+        DvdServiceModel dvdServiceModel = new DvdServiceModel(dvdDTO.getName(), dvdDTO.getGenre(), dvdDTO.getPrix(), dvdDTO.getQuantity(), dvdDTO.getImage_path());
         return dvdService.add(dvdServiceModel);
     }
 
@@ -51,6 +51,6 @@ public class DvdController {
     @PutMapping("/{id}")
     public boolean update(@PathVariable("id") Long id, @RequestBody DvdDTO dvdDTO) {
 
-        return dvdService.update(id, new DvdServiceModel(dvdDTO.getName(), dvdDTO.getGenre(), dvdDTO.getPrix(), dvdDTO.getQuantity(), dvdDTO.getImagePath()));
+        return dvdService.update(id, new DvdServiceModel(dvdDTO.getName(), dvdDTO.getGenre(), dvdDTO.getPrix(), dvdDTO.getQuantity(), dvdDTO.getImage_path()));
     }
 }

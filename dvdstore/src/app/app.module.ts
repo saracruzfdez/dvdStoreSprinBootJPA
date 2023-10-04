@@ -14,6 +14,12 @@ import { DvdComponent } from './dvd/dvd.component';
 import { DvdMenuComponent } from './dvd/dvd-menu/dvd-menu.component';
 import { DvdFormComponent } from './dvd-form/dvd-form.component';
 import { FormsModule } from '@angular/forms';
+import { ClientsComponent } from './clients/clients.component';
+import { DvdFormMenuComponent } from './dvd-form/dvd-form-menu/dvd-form-menu.component';
+import { ClientsTitleComponent } from './clients/clients-title/clients-title.component';
+import { ClientsMenuComponent } from './clients/clients-menu/clients-menu.component';
+import { ClientComponent } from './client/client.component';
+import { ClientMenuComponent } from './client/client-menu/client-menu.component';
 
 
 @NgModule({
@@ -28,6 +34,12 @@ import { FormsModule } from '@angular/forms';
     DvdComponent,
     DvdMenuComponent,
     DvdFormComponent,
+    DvdFormMenuComponent,
+    ClientsComponent,
+    ClientsTitleComponent,
+    ClientsMenuComponent,
+    ClientComponent,
+    ClientMenuComponent,
   ],
   imports: [
     BrowserModule,

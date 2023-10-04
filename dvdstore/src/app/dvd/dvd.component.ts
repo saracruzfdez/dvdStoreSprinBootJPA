@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DvdsService } from '../services/dvds.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-dvd',
@@ -12,8 +14,18 @@ export class DvdComponent implements OnInit {
   id: any;
   dvd: any;
 
-  constructor(private dvdsService: DvdsService, private route: ActivatedRoute) {}
+  constructor(private dvdsService: DvdsService, private route: ActivatedRoute, private router: Router) {}
 
+  delete(id: any){
+
+    this.dvdsService.deleteById(this.id).subscribe(()=>{
+      this.router.navigate(['/dvds']);
+    },
+    (error)=>{
+      console.error("Error al eliminar el dvd", error)
+    })
+
+  }
 
   ngOnInit() {
     

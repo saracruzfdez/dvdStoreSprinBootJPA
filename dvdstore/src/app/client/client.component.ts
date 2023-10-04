@@ -14,20 +14,14 @@ export class ClientComponent implements OnInit {
   id: any;
   client: any;
 
-  constructor(private clientsService: ClientsService, private route: ActivatedRoute){}
+  constructor(private clientsService: ClientsService, private route: ActivatedRoute) { }
 
-  ngOnInit(): void {
-this.id = this.route.snapshot.paramMap.get('id');
-console.log(this.id)
+  ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id');
 
-this.clientsService.getById(this.id).subscribe((clientData)=>{
-
-  this.client = clientData;
-
-})
-
-
-
-}
-
+    this.clientsService.getById(this.id).subscribe((clientData) => {
+      console.log(clientData);
+      this.client = clientData;
+    })
+  }
 }

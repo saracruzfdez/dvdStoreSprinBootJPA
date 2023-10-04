@@ -1,17 +1,87 @@
 <app-clients-title></app-clients-title>
 <app-client-menu></app-client-menu>
 
-
-<div class="container bg-white ">
-  <div class="card border-white mb-3 pb-3" style="max-width: 1240px;">
+<div class="container bg-white">
+  <div class="card border-white pb-3" style="max-width: 750px;">
     <div class="row g-0">
-      <div class="col-md-8">
-        <div class="card-body">
-          <p class="card-text">Nom : {{client.name}} </p>
-          <p class="card-text">Email : {{client.email}}</p>
-          <a class="card-link btn btn-outline-danger btn-sm">Modifier</a>
-          <a class="card-link btn btn-outline-danger btn-sm">Supprimer</a>
+      <div>
+
+        <div class="d-flex">
+        
+          <div class="card-body">
+            <p class="card-text">Name : {{client.name}}</p>
+            <p class="card-text">Email : {{client.email}}</p>
+            <a class="card-link btn btn-outline-danger btn-sm">Modifier</a>
+          </div>
+          
+          <div>
+            <h5>Historique</h5>
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Numero de vente</th>
+                  <th scope="col">Date de vente</th>
+                  <th scope="col">Titre du film</th>
+                  <th scope="col">Prix de vente</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>4646455645</td>
+                  <td>24/10/2022</td>
+                  <td>Matrix</td>
+                  <td>5.55 euros</td>
+                </tr>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>4646455645</td>
+                  <td>24/10/2022</td>
+                  <td>Matrix</td>
+                  <td>5.55 euros</td>
+                </tr>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>4646455645</td>
+                  <td>24/10/2022</td>
+                  <td>Matrix</td>
+                  <td>5.55 euros</td>
+                </tr>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>4646455645</td>
+                  <td>24/10/2022</td>
+                  <td>Matrix</td>
+                  <td>5.55 euros</td>
+                </tr>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>4646455645</td>
+                  <td>24/10/2022</td>
+                  <td>Matrix</td>
+                  <td>5.55 euros</td>
+                </tr>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>4646455645</td>
+                  <td>24/10/2022</td>
+                  <td>Matrix</td>
+                  <td>5.55 euros</td>
+                </tr>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>4646455645</td>
+                  <td>24/10/2022</td>
+                  <td>Matrix</td>
+                  <td>5.55 euros</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
         </div>
+
       </div>
     </div>
   </div>

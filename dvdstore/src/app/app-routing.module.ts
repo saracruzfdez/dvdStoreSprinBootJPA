@@ -1,18 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+
 import { DvdsComponent } from './dvds/dvds.component';
 import { DvdComponent } from './dvd/dvd.component';
-import { HomeComponent } from './home/home.component';
 import { DvdFormComponent } from './dvd-form/dvd-form.component';
 
-const routes: Routes = [
-  { path: '', component : HomeComponent},
-  { path: 'home', component : HomeComponent},
+import { ClientsComponent } from './clients/clients.component';
+import { ClientComponent } from './client/client.component';
 
-  { path: 'dvds', component : DvdsComponent},
-  { path: 'dvd/:id', component : DvdComponent},
-  { path: 'dvd-form', component: DvdFormComponent},
-  { path: 'dvd-form/:id', component: DvdFormComponent}
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+
+  { path: 'dvds', component: DvdsComponent },
+  { path: 'dvd/:id', component: DvdComponent },
+  { path: 'dvd-form', component: DvdFormComponent },
+  { path: 'dvd-form/:id', component: DvdFormComponent },
+
+  { path: 'clients', component: ClientsComponent },
+  { path: 'client/:id', component: ClientComponent }
 ];
 
 @NgModule({
