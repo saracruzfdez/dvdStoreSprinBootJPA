@@ -40,7 +40,7 @@ export class DvdFormComponent {
       if (this.isUpdate) {
         // Estás en modo de actualización, llama a actualizar
         this.dvdService.addOrUpdate(this.dvd).subscribe(() => {
-                console.log('El campo de imagen está vacío en el modo de creación.');
+          console.log('El campo de imagen está vacío en el modo de creación.');
           // Lógica adicional después de la actualización
           this.router.navigate(['/dvds']); // Por ejemplo, redirige a la lista de DVDs
         });

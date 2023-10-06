@@ -14,7 +14,6 @@ export class DvdsComponent implements OnInit {
 
   constructor(private dvdsService: DvdsService) { }
 
-
   ngOnInit() {
     this.dvdsService.getAll().subscribe(data => {
       console.log("Recuperando la data :", data);
