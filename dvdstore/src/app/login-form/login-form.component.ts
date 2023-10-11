@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthRequest, AthenticationService } from '../services/athentication.service'
+import { AuthRequest, AuthenticationService } from '../services/authentication.service'
 
 @Component({
   selector: 'app-login',
@@ -9,8 +9,9 @@ import { AuthRequest, AthenticationService } from '../services/athentication.ser
   styleUrls: ['./login-form.component.css']
 })
 export class LoginComponent {
+  router: any;
 
-  constructor(private authenticationService: AthenticationService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private authenticationService: AuthenticationService) { }
 
   authRequest: AuthRequest = {
     username: '',
@@ -23,8 +24,10 @@ export class LoginComponent {
     this.authRequest.username = form.value.username;
     this.authRequest.password = form.value.password;
 
-    this.authenticationService.authorize(this.authRequest).subscribe(() => {
-
+    this.authenticationService.authorize(this.authRequest).subscribe((value) => {
+      sessionStorage.setItem('token', value.token)
+      
+      this.router.navigate(['/clients'])
     });
   }
 }

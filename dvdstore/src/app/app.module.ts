@@ -26,11 +26,10 @@ import { RecuperationFormComponent } from './recuperation-form/recuperation-form
 import { InscriptionFormComponent } from './inscription-form/inscription-form.component';
 import { InscriptionFormTitleComponent } from './inscription-form/inscription-form-title/inscription-form-title.component';
 import { RecuperationFormTitleComponent } from './recuperation-form/recuperation-form-title/recuperation-form-title.component';
-
+import { AuthGuard } from './guards/auth.guard'; // Importa el guardia de ruta
 
 @NgModule({
   declarations: [
-
     AppComponent,
     NavComponent,
     DvdsComponent,
@@ -59,6 +58,8 @@ import { RecuperationFormTitleComponent } from './recuperation-form/recuperation
     HttpClientModule,
     FormsModule,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [AuthGuard] // Agrega el guardia de ruta a los proveedores
+
 })
 export class AppModule { }

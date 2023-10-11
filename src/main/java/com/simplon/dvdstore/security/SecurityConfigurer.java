@@ -36,9 +36,13 @@ public class SecurityConfigurer {
 // Si vous venez du web et souhaitez le faire dans le sens inverse
 // Détermination des endpoints privées
         http = http.authorizeHttpRequests((r) ->
-                r.requestMatchers("/api/v1/**").authenticated()
+                r.requestMatchers("/private/**").authenticated()
                         .anyRequest().permitAll());
         return http.build();
+
+        /* r.requestMatchers("/api/**").authenticated()
+                .anyRequest().permitAll());
+        return http.build(); */
     }
 }
 //Remarque : configuration de votre application avec le filter et le endpoint

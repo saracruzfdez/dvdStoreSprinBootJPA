@@ -11,6 +11,8 @@ import { ClientComponent } from './client/client.component';
 import { LoginComponent } from './login-form/login-form.component';
 import { RecuperationFormComponent } from './recuperation-form/recuperation-form.component';
 import { InscriptionFormComponent } from './inscription-form/inscription-form.component';
+import { AuthGuard } from './guards/auth.guard';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,7 +23,8 @@ const routes: Routes = [
   { path: 'dvd-form', component: DvdFormComponent },
   { path: 'dvd-form/:id', component: DvdFormComponent },
 
-  { path: 'clients', component: ClientsComponent },
+{ path: 'clients', component: ClientsComponent, canActivate: [AuthGuard]},
+  
   { path: 'client/:id', component: ClientComponent },
 
   { path: 'login-form', component: LoginComponent },
