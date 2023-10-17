@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin("*")
 @RequestMapping("ventes")
 public class VenteController {
 
     @Autowired
     VenteService venteService;
 
-    @PostMapping
+    @PostMapping("/private")
     public boolean addVenteToStore(@RequestBody VenteDTO venteDTO) {
         VenteServiceModel venteServiceModel = new VenteServiceModel(
                 Optional.ofNullable(venteDTO.client_id()),
@@ -27,7 +27,7 @@ public class VenteController {
         return venteService.add(venteServiceModel);
     }
 
-    @GetMapping
+    @GetMapping("/private")
     public ArrayList<VenteGetDTO> getAll() {
         ArrayList<VenteGetDTO> venteGetDTOS = new ArrayList<>();
 

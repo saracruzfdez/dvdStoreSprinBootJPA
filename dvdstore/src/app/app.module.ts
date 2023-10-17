@@ -20,7 +20,13 @@ import { ClientsTitleComponent } from './clients/clients-title/clients-title.com
 import { ClientsMenuComponent } from './clients/clients-menu/clients-menu.component';
 import { ClientComponent } from './client/client.component';
 import { ClientMenuComponent } from './client/client-menu/client-menu.component';
-
+import { LoginComponent } from './login-form/login-form.component';
+import { LoginFormTitleComponent } from './login-form/login-form-title/login-form-title.component';
+import { RecuperationFormComponent } from './recuperation-form/recuperation-form.component';
+import { InscriptionFormComponent } from './inscription-form/inscription-form.component';
+import { InscriptionFormTitleComponent } from './inscription-form/inscription-form-title/inscription-form-title.component';
+import { RecuperationFormTitleComponent } from './recuperation-form/recuperation-form-title/recuperation-form-title.component';
+import { AuthGuard } from './guards/auth.guard'; // Importa el guardia de ruta
 
 @NgModule({
   declarations: [
@@ -40,14 +46,20 @@ import { ClientMenuComponent } from './client/client-menu/client-menu.component'
     ClientsMenuComponent,
     ClientComponent,
     ClientMenuComponent,
-  ],
+    LoginComponent,
+    LoginFormTitleComponent,
+    RecuperationFormComponent,
+    InscriptionFormComponent,
+    InscriptionFormTitleComponent,
+    RecuperationFormTitleComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [AuthGuard] // Agrega el guardia de ruta a los proveedores
+
 })
 export class AppModule { }

@@ -23,7 +23,4 @@ getAll(): Observable<Array<Client>>{
 getById(id: number): Observable<Client>{
 return this.http.get(`http://localhost:9000/clients/${id}`) as Observable<Client>;
 }
-
-
-
 }

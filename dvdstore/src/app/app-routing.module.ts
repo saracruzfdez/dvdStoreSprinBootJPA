@@ -8,6 +8,11 @@ import { DvdFormComponent } from './dvd-form/dvd-form.component';
 
 import { ClientsComponent } from './clients/clients.component';
 import { ClientComponent } from './client/client.component';
+import { LoginComponent } from './login-form/login-form.component';
+import { RecuperationFormComponent } from './recuperation-form/recuperation-form.component';
+import { InscriptionFormComponent } from './inscription-form/inscription-form.component';
+import { AuthGuard } from './guards/auth.guard';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,8 +23,15 @@ const routes: Routes = [
   { path: 'dvd-form', component: DvdFormComponent },
   { path: 'dvd-form/:id', component: DvdFormComponent },
 
-  { path: 'clients', component: ClientsComponent },
-  { path: 'client/:id', component: ClientComponent }
+{ path: 'clients', component: ClientsComponent, canActivate: [AuthGuard]},
+  
+  { path: 'client/:id', component: ClientComponent },
+
+  { path: 'login-form', component: LoginComponent },
+
+  { path: 'recuperation-form', component: RecuperationFormComponent },
+
+  { path: 'inscription-form', component: InscriptionFormComponent }
 ];
 
 @NgModule({

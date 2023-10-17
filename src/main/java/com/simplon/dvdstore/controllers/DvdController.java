@@ -9,13 +9,13 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin("*")
 @RequestMapping("dvds")
 public class DvdController {
     @Autowired
     DvdService dvdService;
 
-    @PostMapping
+    @PostMapping("/private")
     public boolean addDvdToStore(@RequestBody DvdDTO dvdDTO) {
         DvdServiceModel dvdServiceModel = new DvdServiceModel(dvdDTO.getName(), dvdDTO.getGenre(), dvdDTO.getPrix(), dvdDTO.getQuantity(), dvdDTO.getImage_path());
         return dvdService.add(dvdServiceModel);
@@ -43,12 +43,12 @@ public class DvdController {
         return new DvdGetDTO(dvdServiceModel.getId(), dvdServiceModel.getName(), dvdServiceModel.getGenre(), dvdServiceModel.getQuantity(), dvdServiceModel.getPrix(), dvdServiceModel.getImagePath());
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/private/delete/{id}")
     public void deleteById(@PathVariable Long id) {
         dvdService.deleteById(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/private/update/{id}")
     public boolean update(@PathVariable("id") Long id, @RequestBody DvdDTO dvdDTO) {
 
         return dvdService.update(id, new DvdServiceModel(dvdDTO.getName(), dvdDTO.getGenre(), dvdDTO.getPrix(), dvdDTO.getQuantity(), dvdDTO.getImage_path()));
