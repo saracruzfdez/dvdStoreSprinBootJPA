@@ -1,0 +1,29 @@
+<app-dvds-title></app-dvds-title>
+<app-dvd-menu></app-dvd-menu>
+
+
+<div class="container bg-white ">
+
+    <div class="card border-white mb-3 pb-3" style="max-width: 1240px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src={{dvd.image_path}} style="width: 100%;" class="img-fluid" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{dvd.name}}</h5>
+              <p class="card-text">Genre : {{dvd.genre}}</p>
+              <p class="card-text">Prix : {{dvd.prix}} euros</p>
+              <p class="card-text">Quantité : {{dvd.quantity}} unités</p>
+
+            <a [routerLink]="['/dvd-form', dvd.id]" class="card-link btn btn-outline-danger btn-sm">Modifier</a>
+
+            <a (click)="delete(dvd.id)" class="card-link btn btn-outline-danger btn-sm">Supprimer</a>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
