@@ -8,10 +8,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PanierRepository extends CrudRepository<PanierRepositoryModel, Long> {
-
     @Transactional
     @Modifying
     @Query(value = "CALL total()", nativeQuery = true)
+
     void total();
 
 }
