@@ -4,15 +4,11 @@ import lombok.*;
 
 @Data
 public class PanierServiceModel {
-    private int vente_id;
     private int client_id;
     private int dvd_id;
     private float dvd_price;
     private int dvd_quantity;
 
-    public int getVente_id() {
-        return vente_id;
-    }
     public int getClient_id() {
         return client_id;
     }

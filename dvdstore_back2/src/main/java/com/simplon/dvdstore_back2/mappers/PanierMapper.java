@@ -15,4 +15,7 @@ public interface PanierMapper {
 
     // POUR LE GET :
     PanierServiceModel repositoryToServiceModel(PanierRepositoryModel repositoryModel);
+
+    PanierDTO panierServiceModelToDTO(PanierServiceModel panierServiceModel);
+
 }

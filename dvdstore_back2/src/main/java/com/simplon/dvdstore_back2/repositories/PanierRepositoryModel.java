@@ -12,8 +12,6 @@ public class PanierRepositoryModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;  // Clave primaria autogenerada.
-    @Column(name = "vente_id")
-    private Integer vente_id;
     @Column(name = "client_id")
     private Integer client_id;
     @Column(name = "dvd_id")
