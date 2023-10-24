@@ -2,6 +2,7 @@ package com.simplon.dvdstore_back2.services;
 
 import lombok.*;
 
+// FAIRE UN BEAN DS API1 (DTO) QUI CORRESPOND A CA :
 @Data
 public class PanierServiceModel {
     private int client_id;

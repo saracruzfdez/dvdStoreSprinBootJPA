@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// CONTROLLER POUR REQUETER BACK2 A FAIRE DS LE BACK1
+
 @RestController // données JSON grace à REST ou XML
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:9000")
 @RequestMapping("/paniers")
 public class PanierController {
     private final PanierService panierService;
