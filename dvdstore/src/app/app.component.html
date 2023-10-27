@@ -1,7 +1,26 @@
-<app-nav></app-nav>
+<div *ngIf="isDesktopPlatform">
 
-<div class="body-margin">
-  <router-outlet>
+    <app-nav></app-nav>
 
-  </router-outlet>
+    <div style="margin-top:10%">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
+<div *ngIf="isMobile">
+
+    <ion-app style="overflow-y: auto !important;">
+
+        <app-nav></app-nav>
+
+        <ion-content>
+
+            <div style="margin-top:90px; position: relative;">
+                <ion-router-outlet></ion-router-outlet>
+            </div>
+
+        </ion-content>
+
+    </ion-app>
+
 </div>

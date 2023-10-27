@@ -1,3 +1,11 @@
-.body-margin{
+/* .body-margin{
     margin-top:10%
+}
+
+.ion-body-margin{
+    margin-top:30%;
+} */
+
+.overflow-y{
+    overflow-y: auto !important;
 }

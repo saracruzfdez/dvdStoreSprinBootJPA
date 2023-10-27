@@ -28,6 +28,6 @@ export class AuthenticationService {
   }
 
   authorize(authRequest: AuthRequest): Observable<any> {
-    return this.http.post('http://localhost:9000/authorize', authRequest);
+    return this.http.post('http://localhost:9000/acces/authorize', authRequest);
   }
 }
