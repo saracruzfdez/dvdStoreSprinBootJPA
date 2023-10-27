@@ -1,0 +1,12 @@
+{
+  "defaultProject": "dvdstore",
+  "projects": {
+    "dvdstore": {
+      "name": "dvdstore",
+      "integrations": {
+        "capacitor": {}
+      },
+      "type": "angular"
+    }
+  }
+}

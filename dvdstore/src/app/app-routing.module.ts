@@ -13,7 +13,6 @@ import { RecuperationFormComponent } from './recuperation-form/recuperation-form
 import { InscriptionFormComponent } from './inscription-form/inscription-form.component';
 import { AuthGuard } from './guards/auth.guard';
 
-
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
@@ -23,19 +22,20 @@ const routes: Routes = [
   { path: 'dvd-form', component: DvdFormComponent },
   { path: 'dvd-form/:id', component: DvdFormComponent },
 
-{ path: 'clients', component: ClientsComponent, canActivate: [AuthGuard]},
-  
+  { path: 'clients', component: ClientsComponent, canActivate: [AuthGuard] },
   { path: 'client/:id', component: ClientComponent },
 
   { path: 'login-form', component: LoginComponent },
-
   { path: 'recuperation-form', component: RecuperationFormComponent },
-
   { path: 'inscription-form', component: InscriptionFormComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  
+  imports: [
+   RouterModule.forRoot(routes)],
+
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

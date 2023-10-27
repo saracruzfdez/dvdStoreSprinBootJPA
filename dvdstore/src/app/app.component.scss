@@ -1,0 +1,19 @@
+// $isWeb: false; 
+// // Inicialmente, asumimos que no estamos en la plataforma web
+
+// .platform-specific-button {
+//   // Estilos comunes a todas las plataformas
+
+//   .android & {
+//     // Estilos específicos para Android
+//     background-color: #00796b;
+//     color: #fff;
+//   }
+
+//   .web & {
+//     // Estilos específicos para la web
+//     @if $isWeb {
+//       display: none; // Oculta el botón si estamos en la plataforma web
+//     }
+//   }
+// }

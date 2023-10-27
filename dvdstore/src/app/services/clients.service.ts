@@ -17,10 +17,10 @@ export class ClientsService {
   constructor(private http: HttpClient) { }
 
 getAll(): Observable<Array<Client>>{
-  return this.http.get('http://localhost:9000/clients') as Observable<Array<Client>>;
+  return this.http.get('http://localhost:9000/clients/private') as Observable<Array<Client>>;
 }
 
 getById(id: number): Observable<Client>{
-return this.http.get(`http://localhost:9000/clients/${id}`) as Observable<Client>;
+return this.http.get(`http://localhost:9000/clients/private/${id}`) as Observable<Client>;
 }
 }
