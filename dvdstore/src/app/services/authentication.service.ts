@@ -13,21 +13,54 @@ export interface AuthRequest {
 
 export class AuthenticationService {
 
-  private loggedIn = new BehaviorSubject<boolean>(false);
+  //private loggedIn = new BehaviorSubject<boolean>(false);
 
-  isAuthenticated(): Observable<boolean> {
-    return this.loggedIn.asObservable()
+  is_auth = (): boolean => {
+    return this.getToken();
   }
+
+  // isAuthenticated(): Observable<boolean> {
+  //   return this.loggedIn.asObservable()
+  // }
 
   constructor(private http: HttpClient) {
-    this.loggedIn.next(this.getToken() !== null)
-  }
-  
-  getToken() {
-    return sessionStorage.getItem('token');
+    //this.loggedIn.next(this.getToken())
   }
 
+  // Login
   authorize(authRequest: AuthRequest): Observable<any> {
-    return this.http.post('http://localhost:9000/acces/authorize', authRequest);
+    return this.http.post('http://localhost:9000/authorize', authRequest);
   }
+
+  getToken(): boolean {
+    const token = sessionStorage.getItem('token');
+    return token !== null;
+  }
+
+  setToken = (token: string) => {
+    sessionStorage.setItem('token', token);
+  }
+
+  getUser = () => {
+    const userParse = sessionStorage.getItem("user");
+    if(userParse !== null){
+      return JSON.parse(userParse);
+    }
+    return null;
+  }
+
+  setUser = (user: any) => {
+    const userJSON = JSON.stringify(user);
+    sessionStorage.setItem('user', userJSON);
+  }
+
+  logout = () => {
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("user");
+    
+  }
+
+
+
+
 }

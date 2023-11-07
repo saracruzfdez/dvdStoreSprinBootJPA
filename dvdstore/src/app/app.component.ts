@@ -17,5 +17,4 @@ export class AppComponent {
     this.isDesktopPlatform = this.platform.is('desktop');
     this.isMobile = this.platform.is('android') || this.platform.is('ios');
   }
-  
 }
