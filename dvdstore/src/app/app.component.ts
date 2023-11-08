@@ -10,11 +10,31 @@ import { Platform } from '@ionic/angular'; // Importa Platform
 export class AppComponent {
   title = 'dvdstore';
 
-  isDesktopPlatform: boolean;
-  isMobile: boolean
+  isDesktopPlatform: boolean =false;
+  isMobile: boolean = false;
 
   constructor(private platform: Platform) {
-    this.isDesktopPlatform = this.platform.is('desktop');
-    this.isMobile = this.platform.is('android') || this.platform.is('ios');
+    // if(this.platform.is('android') || this.platform.is('ios')) {
+    //   this.isDesktopPlatform = false;
+    //   this.isMobile = true;
+    // } else {
+    //   this.isDesktopPlatform = true;
+    //   this.isMobile = false;
+    // }
+    // this.isMobile = this.platform.is('android') || this.platform.is('ios');
+    
+  }
+
+  ngOnInit(): void {
+    if(this.platform.is('android') || this.platform.is('ios')) {
+      this.isDesktopPlatform = false;
+      this.isMobile = true;
+    } else {
+      this.isDesktopPlatform = true;
+      this.isMobile = false;
+    }
+
+    console.log("isDesktopPlatform", this.isDesktopPlatform)
+    console.log("isMobile", this.isMobile)
   }
 }

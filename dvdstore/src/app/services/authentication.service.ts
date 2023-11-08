@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 export interface AuthRequest {
   username: string;
@@ -13,21 +13,14 @@ export interface AuthRequest {
 
 export class AuthenticationService {
 
-  //private loggedIn = new BehaviorSubject<boolean>(false);
-
   is_auth = (): boolean => {
     return this.getToken();
   }
 
-  // isAuthenticated(): Observable<boolean> {
-  //   return this.loggedIn.asObservable()
-  // }
-
   constructor(private http: HttpClient) {
-    //this.loggedIn.next(this.getToken())
   }
 
-  // Login
+  // Login :
   authorize(authRequest: AuthRequest): Observable<any> {
     return this.http.post('http://localhost:9000/authorize', authRequest);
   }
@@ -57,7 +50,6 @@ export class AuthenticationService {
   logout = () => {
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("user");
-    
   }
 
 

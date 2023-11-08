@@ -1,11 +1,12 @@
-<app-dvds-title></app-dvds-title>
-<app-dvd-form-menu></app-dvd-form-menu>
+<!-- <ion-content> -->
 
-<div class="container bg-white ">
+<div style="margin-top:90px; position: relative;"  class="container bg-white ">
+    <app-dvds-title></app-dvds-title>
+    <app-dvd-form-menu></app-dvd-form-menu>
 
     <div class="justify-content-center p-3">
 
-        <form #form="ngForm" class="m-auto p-3 w-50 border" (submit)="formulaire(form)">
+        <form #form="ngForm" class="m-auto p-3 w-75 border" (submit)="formulaire(form)">
 
             <h4 class="pb-2">Ajouter un film</h4>
 
@@ -48,3 +49,5 @@
         </form>
     </div>
 </div>
+
+<!-- </ion-content> -->

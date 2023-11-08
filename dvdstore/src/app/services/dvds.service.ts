@@ -18,8 +18,6 @@ export class DvdsService {
 
   constructor(private http: HttpClient) { }
 
-
-
     // Función para obtener los encabezados con el token JWT
     private getHeaders(): HttpHeaders {
       const token = sessionStorage.getItem('token');
@@ -28,8 +26,6 @@ export class DvdsService {
       });
     }
 
-
-
   getAll(): Observable<Array<Dvd>> {
     return this.http.get('http://localhost:9000/dvds') as Observable<Array<Dvd>>;
   }
@@ -37,7 +33,6 @@ export class DvdsService {
   getById(id: number): Observable<Dvd> {
     return this.http.get(`http://localhost:9000/dvds/${id}`, { headers: this.getHeaders() }) as Observable<Dvd>;
   }
-
 
   deleteById(id: number): Observable<Dvd> {
     return this.http.delete(`http://localhost:9000/dvds/delete/${id}`, { headers: this.getHeaders() }) as Observable<Dvd>;
