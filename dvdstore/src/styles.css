@@ -13,6 +13,7 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-.overflow-y{
-    overflow-y: auto !important;
+.ion-page{
+    overflow: auto !important;
 }
+

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Dvd {
@@ -18,17 +18,24 @@ export class DvdsService {
 
   constructor(private http: HttpClient) { }
 
+    // Función para obtener los encabezados con el token JWT
+    private getHeaders(): HttpHeaders {
+      const token = sessionStorage.getItem('token');
+      return new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+    }
+
   getAll(): Observable<Array<Dvd>> {
     return this.http.get('http://localhost:9000/dvds') as Observable<Array<Dvd>>;
   }
 
   getById(id: number): Observable<Dvd> {
-    return this.http.get(`http://localhost:9000/dvds/${id}`) as Observable<Dvd>;
+    return this.http.get(`http://localhost:9000/dvds/${id}`, { headers: this.getHeaders() }) as Observable<Dvd>;
   }
 
-
   deleteById(id: number): Observable<Dvd> {
-    return this.http.delete(`http://localhost:9000/dvds/private/delete/${id}`) as Observable<Dvd>;
+    return this.http.delete(`http://localhost:9000/dvds/delete/${id}`, { headers: this.getHeaders() }) as Observable<Dvd>;
   }
 
   // Agregar o actualizar un DVD
@@ -45,12 +52,12 @@ export class DvdsService {
   // Agregar un nuevo DVD
   private add(newDvd: Dvd): Observable<Dvd> {
     // Realiza una solicitud HTTP POST para agregar el nuevo DVD
-    return this.http.post('http://localhost:9000/dvds/private', newDvd) as Observable<Dvd>;
+    return this.http.post('http://localhost:9000/dvds', newDvd, { headers: this.getHeaders() }) as Observable<Dvd>;
   }
 
   // Actualizar un DVD existente
   private update(dvd: Dvd): Observable<Dvd> {
     // Realiza una solicitud HTTP PUT para actualizar el DVD
-    return this.http.put(`http://localhost:9000/dvds/private/update/${dvd.id}`, dvd) as Observable<Dvd>;
+    return this.http.put(`http://localhost:9000/dvds/update/${dvd.id}`, dvd, { headers: this.getHeaders() }) as Observable<Dvd>;
   }
 }
